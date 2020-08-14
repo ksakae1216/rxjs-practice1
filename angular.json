@@ -30,8 +30,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -141,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "rxjs-practice1"
+  "defaultProject": "rxjs-practice1",
+  "cli": {
+    "analytics": false
+  }
 }
