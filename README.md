@@ -1,6 +1,7 @@
 # RxjsPractice1
 
 参考サイト(Angular10)
+
 https://dev.classmethod.jp/articles/beginner-ngrx-angular-app/
 
 ## Development server
