@@ -142,6 +142,7 @@
   },
   "defaultProject": "rxjs-practice1",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@ngrx/schematics"
   }
 }

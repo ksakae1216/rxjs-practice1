@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { TodoService } from '../../services/todo.service';
+import { TodoFacade } from '../../store/todo.facade';
 import { Todo } from '../../models/todo.model';
 
 @Component({
@@ -12,13 +12,13 @@ import { Todo } from '../../models/todo.model';
 })
 export class TodoComponent implements OnInit {
 
-  todos$: Observable<Todo[]>;
+  loading$ = this.todoService.loading$;
+  todos$ = this.todoService.todos$;
 
-  constructor(private todoService: TodoService) { 
-  }
+  constructor(private todoService: TodoFacade) {}
 
   ngOnInit(): void {
-    this.todos$ = this.todoService.loadAll();
+    this.todoService.loadAll();
   }
 
   create(todo: Partial<Todo>) {
@@ -26,19 +26,13 @@ export class TodoComponent implements OnInit {
     todo.checked = false;
     todo.createdAt = Math.floor(date.getTime() / 1000);
     todo.updatedAt = Math.floor(date.getTime() / 1000);
-    this.todoService.create(todo).subscribe(_ => {
-      this.todos$ = this.todoService.loadAll();
-    });
+    this.todoService.create(todo);
   }
   update(todo: Todo) {
-    this.todoService.update(todo).subscribe(_ => {
-      this.todos$ = this.todoService.loadAll();
-    });
+    this.todoService.update(todo);
   }
   remove(id: number) {
-    this.todoService.remove(id).subscribe(_ => {
-      this.todos$ = this.todoService.loadAll();
-    });
+    this.todoService.remove(id);
   }
 
 }

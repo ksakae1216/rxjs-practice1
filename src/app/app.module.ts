@@ -8,6 +8,7 @@ import { TodoModule } from './todo/todo.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppStoreModule } from './app-store/app-store.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
+    AppStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
